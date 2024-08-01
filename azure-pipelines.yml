@@ -30,15 +30,19 @@ steps:
     command: 'pack'
     projects: '**/*.csproj'
     arguments: '--no-build --configuration $(buildConfiguration)'
-    versioningScheme: byPrereleaseNumber
+    versioningScheme: 'byPrereleaseNumber'
     majorVersion: '1'
     minorVersion: '0'
     patchVersion: '0'
- 
+
+- task: NuGetAuthenticate@0
+  displayName: 'Authenticate with NuGet'
+
 - task: NuGetCommand@2
   displayName: 'Publish NuGet package'
   inputs:
-    command: push
-    feedPublish: 'Tailspin.SpaceGame.Web.Models'
+    command: 'push'
+    packagesToPush: '**/*.nupkg'
+    publishVstsFeed: 'Tailspin.SpaceGame.Web.Models'
     allowPackageConflicts: true
   condition: succeeded()
