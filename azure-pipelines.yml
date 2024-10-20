@@ -43,6 +43,6 @@ steps:
   inputs:
     command: 'push'
     packagesToPush: '**/*.nupkg'
-    publishVstsFeed: 'Tailspin.SpaceGame.Web.Models'
+    publishVstsFeed: 'Tailspin.SpaceGame.Web.Models1'
     allowPackageConflicts: true
   condition: succeeded()
